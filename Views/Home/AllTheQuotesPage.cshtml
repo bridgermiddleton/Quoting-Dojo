@@ -1,0 +1,13 @@
+
+<div class="container">
+    <h1 class="text-center">Here are the awesome quotes!</h1>
+        @foreach(Dictionary<string, object> quote in ViewBag.ListofQuotes)
+        {
+            <blockquote class="blockquote">
+                <p class="mb-0">@quote["TheQuote"]</p>
+                <footer class="blockquote-footer">@quote["Name"] at @quote["created_at"]</footer>
+            </blockquote>
+
+        }
+    
+</div>
