@@ -18,9 +18,15 @@ namespace QuotingDojo.Controllers
         [HttpPost]
         public IActionResult AddQuote(Quote yourQuote)
         {
+            if(ModelState.IsValid)
+            {
             string query = $"INSERT INTO Quote (Name, TheQuote, created_at, updated_at) VALUES ('{yourQuote.Name}','{yourQuote.TheQuote}',NOW(),NOW());";
             DbConnector.Execute(query);
-            return RedirectToAction("AllTheQuotesPage");
+            return RedirectToAction("AllTheQuotesPage");  
+            }
+            return View("AddQuotePage");
+
+            
         }
         [HttpGet("quotes")]
         public IActionResult AllTheQuotesPage()
